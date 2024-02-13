@@ -114,23 +114,3 @@ class LinkedList:
             if current.next is None:
                 raise ValueError("Ошибка!")
             current.next=current.next.next
-
-
-
-   
-
-
-
-my_list = LinkedList()
-my_list.append_end(3)
-my_list.append_end(4)
-my_list.append_end(8)
-my_list.append_end(1)
-my_list.append_end(7)
-my_list.append_end(9)
-#my_list.remove_at(0)
-my_list.remove_first()
-#my_list.remove_first_value(9)
-#my_list.remove_last()
-#my_list.remove_last_value(1)
-
