@@ -1,7 +1,5 @@
 class LinkedList:
-    __len = None
-
-    class Item:
+class Item:
         value = None
         next = None
 
@@ -12,16 +10,17 @@ class LinkedList:
 
     
 
-    @property
-    def len(self):
-        index = 0
+    def __len__(self):
         current = self.head
+        ind = []
         while current:
             current = current.next
-            index +=1
-        self.__len = index
-        return self.__len
-    
+            ind.append(1)
+        return len(ind)
+
+
+
+
     def append_begin(self, value):
         item = LinkedList.Item(value)
         item.next = self.head
@@ -60,10 +59,15 @@ class LinkedList:
     def remove_last(self):
         if self.head is None:
             raise ValueError("Элементов нет, удалять нечего!")
+        if self.head.next is None:
+            self.head = None
+            return
         current = self.head
-        while current.next.next:
+        while current.next:
             current = current.next
         current.next = None
+        
+
 
     def remove_first_value(self, value):
         if self.head is None:
@@ -72,13 +76,17 @@ class LinkedList:
             self.head = self.head.next
             return
         current=self.head
-        while current.next.value!=value:
-                if current.next.next is None:
-                    raise ValueError("Ошибка!")
+        perem = None
+        while current:
+                if current.value == value:
+                    perem = current
+                    current = current.next
+                    break
                 current = current.next
-        current.next = current.next.next
-
-    
+        if perem is not None:
+            perem.next = current.next
+        else:
+            raise ValueError("ERROR")
 
     def remove_last_value(self, value):
         if self.head is None:
