@@ -1,5 +1,5 @@
 class LinkedList:
-class Item:
+    class Item:
         value = None
         next = None
 
